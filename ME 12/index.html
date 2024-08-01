@@ -1,0 +1,49 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js" integrity="sha512-L6Z/YtIPQ7eU3BProP34WGU5yIRk7tNHk7vaC2dB1Vy1atz6wl9mCkTPPZ2Rn1qPr+vY2mZ9odZLdGYuaBk7dQ==" crossorigin="anonymous"></script>
+
+
+<button class="play-music">Play music</button>
+<button class="stop-music">Stop music</button>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Elements</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Mystic Elements</h1>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time: 60</div>
+    <button id="pause-button">Pause</button>
+    <div id="game-board"></div>
+
+    <!-- Start Button Overlay -->
+    <div id="start-overlay">
+        <button id="start-button">READY</button>
+    </div>
+
+    <!-- Modal for Game Over -->
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <h2>Game Over</h2>
+            <p id="final-score"></p>
+            <p>Would you like to save your score?</p>
+            <button id="yes-button">Yes</button>
+            <button id="no-button">No</button>
+        </div>
+    </div>
+
+    <!-- Modal for Leaderboard -->
+    <div id="leaderboard-modal" class="modal">
+        <div class="modal-content">
+            <h2>Leaderboard</h2>
+            <div id="leaderboard"></div>
+            <button id="close-leaderboard">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>  

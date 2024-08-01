@@ -1,0 +1,221 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background:
+      url('https://i.postimg.cc/4dP0RQ1F/New-Game-background.png') center;
+    margin: 0;
+    padding: 0;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* Use fractional units for responsiveness */
+    grid-template-rows: repeat(8, 1fr); /* Use fractional units for responsiveness */
+    gap: 7px;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 5px;
+    width: 60vw; /* Use viewport width for responsiveness */
+    height: 65vw; /* Use viewport width for responsiveness */
+    background: url('https://i.postimg.cc/3JnDQz5Z/DarkCB5.png') no-repeat center center;
+    background-size: cover; /* Ensure the background covers the entire area */
+    border: 1px solid #fff;
+    border-image: url('https://i.postimg.cc/Rh1wX01k/BG-3.png') 30 stretch;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative; /* For particle effects */
+}
+.audio-controls {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.audio-controls label,
+.audio-controls input,
+.audio-controls button {
+    margin: 5px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+button, input[type="range"] {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.jewel {
+    width: 112%; /* Make jewels responsive */
+    height: 100%; /* Make jewels responsive */
+    background-size: cover;
+    border: 0px solid;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw; /* Use viewport width for font size */
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+/* Additional CSS for matched jewels */
+.jewel.matched {
+    background-size: 150%; 
+    opacity: 0;
+}
+
+.jewel.red {
+    background-image: url( 'https://i.postimg.cc/85bYxGX7/Heart-gem-2.png');
+}
+
+.jewel.blue {
+    background-image: url('https://i.postimg.cc/VvLh8h2D/Water-gem-3.png');
+}
+
+.jewel.green {
+    background-image: url('https://i.postimg.cc/RZ3jhjhY/Earth-gem-6.png');
+}
+
+.jewel.yellow {
+    background-image: url('https://i.postimg.cc/7ZSxC8J6/Sun-gem-3.png');
+}
+
+.jewel.orange {
+    background-image: url('https://i.postimg.cc/DfYfHcK2/Fire-gem-2.png');
+}
+
+.jewel.purple {
+    background-image: url('https://i.postimg.cc/BtfZF3k9/New-MPG.png');
+}
+
+.jewel.white {
+    background-image: url('https://i.postimg.cc/wTCqTTvZ/moon-gem.png');
+}
+
+#score, #timer {
+    font-size: 5vw; /* Use viewport width for font size */
+    margin: 10px;
+    color: gold;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+#pause-button {
+    font-size: 4vw; /* Use viewport width for font size */
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 0;
+}
+
+.modal-content p {
+    margin: 15px 0;
+}
+
+.particle {
+    width: 5px;
+    height: 5px;
+    background-color: rgba(255, 0, 255, 0.8);
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    #game-board {
+        width: 90vw; /* Use viewport width for responsiveness */
+        height: 90vw; /* Use viewport width for responsiveness */
+    }
+
+    .jewel {
+        font-size: 3vw; /* Adjust font size for smaller screens */
+    }
+
+    #score, #timer {
+        font-size: 5vw; /* Adjust font size for smaller screens */
+    }
+
+    #pause-button {
+        font-size: 4vw; /* Adjust font size for smaller screens */
+    }
+}
+/* Add this to your existing CSS */
+.paused {
+    pointer-events: none; /* Disable pointer events */
+    opacity: 0.9; /* Optional: Add a visual indicator that the game is paused */
+}
+#countdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#countdown-text {
+    font-size: 10vw; /* Use viewport width for font size */
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+#start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 47%;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+#start-button {
+    font-size: 10vw; /* Use viewport width for font size */
+    color: #fff;
+    background: #333;
+    border: none;
+    padding: 20px 40px;
+    cursor: pointer;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  z-index: 1001; /* Ensure the button is on top of the overlay */
+    pointer-events: auto; /* Ensure the button can receive pointer events */
+}
